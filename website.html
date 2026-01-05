@@ -6,27 +6,58 @@
     <title>
       OBSIDIAN SERVIS - Servis Motor Presisi untuk Performa Jangka Panjang
     </title>
+    <meta
+      name="description"
+      content="Bengkel motor premium OBSIDIAN SERVIS: Servis detail, presisi tinggi, dan fokus ketahanan jangka panjang untuk motor matic dan sport. Booking sekarang!"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      /* Reset dan Base Styles */
+      /* CSS Variables for Branding */
+      :root {
+        --obsidian-black: #1a1a1a;
+        --dark-metallic-gray: #333333;
+        --lava-red: #ff4500;
+        --text-light: #f1f1f1;
+        --shadow: rgba(0, 0, 0, 0.3);
+      }
+
+      /* Reset & Base Styles */
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
       body {
-        font-family: "Montserrat", sans-serif;
-        background-color: #0a0a0a; /* Obsidian Black */
-        color: #e0e0e0; /* Light gray for text */
+        font-family: "Inter", sans-serif;
+        color: var(--obsidian-black);
+        background-color: var(--text-light);
         line-height: 1.6;
-        overflow-x: hidden;
       }
       h1,
       h2,
       h3 {
-        font-family: "Poppins", sans-serif;
-        font-weight: bold;
+        font-family: "Montserrat", sans-serif;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        font-weight: 700;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+      .image-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .image-wrapper img {
+        width: 200px;
+        height: auto;
       }
       a {
         text-decoration: none;
@@ -42,18 +73,19 @@
       header {
         position: sticky;
         top: 0;
-        background-color: #0a0a0a;
+        background-color: var(--obsidian-black);
+        color: var(--text-light);
         padding: 1rem 2rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
         z-index: 100;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 2px 5px var(--shadow);
       }
       .logo {
         font-size: 1.5rem;
-        font-weight: bold;
-        color: #ff4500; /* Lava Red */
+        font-weight: 700;
+        color: var(--lava-red);
       }
       nav ul {
         list-style: none;
@@ -61,49 +93,75 @@
         gap: 2rem;
       }
       nav a {
-        color: #e0e0e0;
-        font-weight: 500;
+        transition: color 0.3s;
       }
       nav a:hover {
-        color: #ff4500;
+        color: var(--lava-red);
       }
       .cta-button {
-        background-color: #ff4500;
-        color: #0a0a0a;
+        background-color: var(--lava-red);
+        color: var(--text-light);
         padding: 0.5rem 1rem;
         border: none;
         border-radius: 5px;
-        font-weight: bold;
+        font-weight: 600;
       }
       .cta-button:hover {
         background-color: #e63900;
       }
 
+      /* Mobile Menu */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+      }
+      .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: var(--text-light);
+        margin: 3px 0;
+        transition: 0.3s;
+      }
+      .mobile-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--obsidian-black);
+        flex-direction: column;
+        padding: 1rem;
+      }
+      .mobile-menu.active {
+        display: flex;
+      }
+
       /* Hero Section */
       .hero {
-        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-        padding: 5rem 2rem;
+        background: linear-gradient(
+          135deg,
+          var(--obsidian-black),
+          var(--dark-metallic-gray)
+        );
+        color: var(--text-light);
+        padding: 4rem 2rem;
         text-align: center;
-        min-height: 80vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
       }
       .hero h1 {
-        font-size: 3rem;
-        color: #ffffff;
+        font-size: 2.5rem;
         margin-bottom: 1rem;
       }
       .hero p {
         font-size: 1.2rem;
-        color: #b0b0b0;
         margin-bottom: 2rem;
-        max-width: 600px;
       }
-      .hero .cta-button {
-        font-size: 1.1rem;
-        padding: 1rem 2rem;
+      .hero img {
+        border-radius: 10px;
+        box-shadow: 0 5px 15px var(--shadow);
       }
 
       /* Sections */
@@ -112,220 +170,127 @@
         max-width: 1200px;
         margin: 0 auto;
       }
-      .filosofi {
-        background-color: #1a1a1a;
+      .filosofi,
+      .kenapa,
+      .tentang {
         text-align: center;
       }
-      .filosofi h2 {
-        color: #ff4500;
-        margin-bottom: 2rem;
-      }
-      .filosofi p {
-        max-width: 800px;
-        margin: 0 auto;
-        color: #d0d0d0;
-      }
-
-      /* Layanan */
-      .layanan {
-        background-color: #0a0a0a;
-      }
-      .layanan h2 {
-        text-align: center;
-        color: #ffffff;
-        margin-bottom: 3rem;
-      }
-      .layanan-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-      }
-      .layanan-card {
-        background-color: #1a1a1a;
-        padding: 2rem;
-        border-radius: 10px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-        text-align: center;
-        border: 1px solid #333;
-      }
-      .layanan-card h3 {
-        color: #ff4500;
-        margin-bottom: 1rem;
-      }
-      .layanan-card p {
-        color: #b0b0b0;
-      }
-      .layanan-card .harga {
-        font-weight: bold;
-        color: #ffffff;
-        margin-top: 1rem;
-      }
-
-      /* Kenapa Kami */
-      .kenapa {
-        background-color: #1a1a1a;
-        text-align: center;
-      }
-      .kenapa h2 {
-        color: #ffffff;
-        margin-bottom: 3rem;
-      }
-      .kenapa ul {
-        list-style: none;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        max-width: 1000px;
-        margin: 0 auto;
-      }
-      .kenapa li {
-        background-color: #0a0a0a;
-        padding: 2rem;
-        border-radius: 10px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-      }
-      .kenapa li::before {
-        content: "⚙️"; /* Icon placeholder */
-        font-size: 2rem;
-        color: #ff4500;
-        display: block;
-        margin-bottom: 1rem;
-      }
-
-      /* Harga */
+      .layanan,
       .harga {
-        background-color: #0a0a0a;
+        display: grid;
+        gap: 2rem;
       }
-      .harga h2 {
-        text-align: center;
-        color: #ffffff;
-        margin-bottom: 3rem;
+      .card {
+        background-color: var(--text-light);
+        border: 1px solid var(--dark-metallic-gray);
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 5px 15px var(--shadow);
+        transition: transform 0.3s;
       }
-      .harga table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 0 auto;
-        max-width: 800px;
+      .card:hover {
+        transform: translateY(-5px);
       }
-      .harga th,
-      .harga td {
-        padding: 1rem;
-        text-align: left;
-        border-bottom: 1px solid #333;
-      }
-      .harga th {
-        color: #ff4500;
-        font-weight: bold;
-      }
-      .harga td {
-        color: #d0d0d0;
+      .card h3 {
+        color: var(--lava-red);
+        margin-bottom: 1rem;
       }
 
-      /* Booking */
-      .booking {
-        background-color: #1a1a1a;
-      }
-      .booking h2 {
-        text-align: center;
-        color: #ffffff;
-        margin-bottom: 3rem;
-      }
-      form {
+      /* Booking Form */
+      .booking-form {
+        background-color: var(--obsidian-black);
+        color: var(--text-light);
+        padding: 2rem;
+        border-radius: 10px;
         max-width: 600px;
         margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
       }
-      input,
-      select,
-      button {
-        padding: 1rem;
-        border: 1px solid #333;
-        border-radius: 5px;
-        background-color: #0a0a0a;
-        color: #e0e0e0;
-      }
-      button[type="submit"] {
-        background-color: #ff4500;
-        color: #0a0a0a;
-        font-weight: bold;
-      }
-      button[type="submit"]:hover {
-        background-color: #e63900;
-      }
-
-      /* Tentang */
-      .tentang {
-        background-color: #0a0a0a;
-        text-align: center;
-      }
-      .tentang h2 {
-        color: #ffffff;
-        margin-bottom: 2rem;
-      }
-      .tentang p {
-        max-width: 800px;
-        margin: 0 auto;
-        color: #d0d0d0;
-      }
-
-      /* Kontak & Footer */
-      .kontak {
-        background-color: #1a1a1a;
-        text-align: center;
-      }
-      .kontak h2 {
-        color: #ffffff;
-        margin-bottom: 2rem;
-      }
-      .kontak p {
-        color: #b0b0b0;
+      .booking-form input,
+      .booking-form select,
+      .booking-form textarea {
+        width: 100%;
+        padding: 0.5rem;
         margin-bottom: 1rem;
+        border: none;
+        border-radius: 5px;
+        background-color: var(--dark-metallic-gray);
+        color: var(--text-light);
       }
-      .kontak a {
-        color: #ff4500;
-      }
-      footer {
-        background-color: #0a0a0a;
-        padding: 2rem;
-        text-align: center;
-        color: #666;
+      .booking-form button {
+        width: 100%;
+        padding: 1rem;
+        background-color: var(--lava-red);
+        color: var(--text-light);
+        border: none;
+        border-radius: 5px;
+        font-size: 1.1rem;
       }
 
-      /* Mobile Responsiveness */
+      /* Footer */
+      footer {
+        background-color: var(--obsidian-black);
+        color: var(--text-light);
+        text-align: center;
+        padding: 2rem;
+      }
+      footer a {
+        color: var(--lava-red);
+      }
+
+      /* Responsive */
       @media (max-width: 768px) {
+        header {
+          padding: 1rem;
+        }
+        nav ul {
+          display: none;
+        }
+        .hamburger {
+          display: flex;
+        }
+        .hero {
+          grid-template-columns: 1fr;
+          padding: 2rem 1rem;
+        }
         .hero h1 {
           font-size: 2rem;
         }
-        nav ul {
-          flex-direction: column;
-          gap: 1rem;
+        .layanan {
+          grid-template-columns: 1fr;
         }
-        .layanan-grid,
-        .kenapa ul {
+        .harga {
           grid-template-columns: 1fr;
         }
       }
-
-      /* Animasi Halus */
-      .fade-in {
-        opacity: 0;
-        animation: fadeIn 1s ease-in-out forwards;
-      }
-      @keyframes fadeIn {
-        to {
-          opacity: 1;
+      @media (min-width: 1024px) {
+        .hero {
+          grid-template-columns: 1fr 1fr;
+          text-align: left;
+        }
+        .layanan {
+          grid-template-columns: repeat(4, 1fr);
+        }
+        .harga {
+          grid-template-columns: repeat(2, 1fr);
         }
       }
     </style>
   </head>
   <body>
+    <!-- Header -->
     <header>
       <div class="logo">OBSIDIAN SERVIS</div>
+      <div class="logo">
+        <img
+          src="c:\Users\Acer\Downloads\Jan 4, 2026, 04_11_04 PM.png"
+          alt="people image"
+          width="50"
+          height="50"
+        />
+      </div>
       <nav>
         <ul>
-          <li><a href="#hero">Beranda</a></li>
+          <li><a href="#beranda">Beranda</a></li>
           <li><a href="#layanan">Layanan</a></li>
           <li><a href="#harga">Harga</a></li>
           <li><a href="#booking">Booking</a></li>
@@ -333,179 +298,200 @@
           <li><a href="#kontak">Kontak</a></li>
         </ul>
       </nav>
-      <button class="cta-button">BOOK SERVIS</button>
+      <button class="cta-button" onclick="scrollToSection('booking')">
+        BOOK SERVIS
+      </button>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="mobile-menu">
+        <a href="#beranda">Beranda</a>
+        <a href="#layanan">Layanan</a>
+        <a href="#harga">Harga</a>
+        <a href="#booking">Booking</a>
+        <a href="#tentang">Tentang</a>
+        <a href="#kontak">Kontak</a>
+      </div>
     </header>
 
-    <section id="hero" class="hero fade-in">
-      <h1>SERVIS MOTOR PRESISI UNTUK PERFORMA JANGKA PANJANG</h1>
-      <p>
-        Bukan sekadar cepat — kami fokus pada ketahanan & detail. Born from
-        Fire, Built to Last.
-      </p>
-      <button class="cta-button">Booking Sekarang</button>
+    <!-- Hero Section -->
+    <section id="beranda" class="hero">
+      <div>
+        <h1>SERVIS MOTOR PRESISI UNTUK PERFORMA JANGKA PANJANG</h1>
+        <p>
+          Bukan sekadar cepat — kami fokus pada kualitas & ketahanan. Born from
+          Fire, Built to Last. Azzahra.laillia
+        </p>
+        <button class="cta-button" onclick="scrollToSection('booking')">
+          Booking Sekarang
+        </button>
+      </div>
+      <img
+        src="c:\Users\Acer\Downloads\WhatsApp Image 2026-01-05 at 15.27.54.jpeg"
+        alt="Motor Sport di Bengkel OBSIDIAN SERVIS"
+        width="520"
+        height="400"
+      />
     </section>
 
-    <section id="filosofi" class="filosofi fade-in">
-      <h2>Filosofi Servis Kami</h2>
+    <!-- Filosofi -->
+    <section class="filosofi">
+      <h2>Filosofi OBSIDIAN SERVIS</h2>
       <p>
-        Di OBSIDIAN SERVIS, setiap servis adalah komitmen terhadap presisi dan
-        ketahanan. Kami melakukan inspeksi menyeluruh sebelum dan sesudah
-        servis, memastikan setiap detail diperhatikan. Teknisi berpengalaman
-        kami tidak hanya memperbaiki, tetapi juga mendidik pelanggan tentang
-        kondisi motor mereka, membangun kepercayaan jangka panjang.
+        Kami percaya bahwa servis motor bukan hanya tentang memperbaiki, tetapi
+        membangun ketahanan jangka panjang. Dengan inspeksi detail sebelum dan
+        sesudah servis, serta edukasi singkat kepada pelanggan, kami memastikan
+        setiap motor kembali ke jalan dengan presisi tinggi dan performa
+        optimal.
       </p>
     </section>
 
-    <section id="layanan" class="layanan fade-in">
+    <!-- Layanan Utama -->
+    <section id="layanan">
       <h2>Layanan Utama</h2>
-      <div class="layanan-grid">
-        <div class="layanan-card">
+      <div class="layanan">
+        <div class="card">
           <h3>Servis Rutin Detail</h3>
-          <p>
-            Cek mesin, CVT, rem, suspensi, kelistrikan. Laporan kondisi motor
-            lengkap.
-          </p>
-          <div class="harga">Rp120.000</div>
+          <p>Cek mesin, CVT, rem, suspensi, kelistrikan. Harga: Rp120.000</p>
         </div>
-        <div class="layanan-card">
+        <div class="card">
           <h3>Perbaikan Mesin</h3>
-          <p>
-            Tune up presisi, overhaul ringan & berat untuk performa optimal.
-          </p>
-          <div class="harga">Mulai Rp450.000</div>
+          <p>Tune up presisi & overhaul. Harga mulai: Rp450.000</p>
         </div>
-        <div class="layanan-card">
+        <div class="card">
           <h3>Cuci Motor Premium</h3>
-          <p>Steam detail, aman untuk motor matic & sport.</p>
-          <div class="harga">Rp40.000</div>
+          <p>Steam detail aman matic & sport. Harga: Rp40.000</p>
         </div>
-        <div class="layanan-card">
+        <div class="card">
           <h3>Ganti Oli Presisi</h3>
-          <p>Oli standar & premium, disesuaikan spek motor Anda.</p>
-          <div class="harga">Mulai Rp70.000</div>
+          <p>Oli sesuai spek motor. Harga mulai: Rp70.000</p>
         </div>
       </div>
     </section>
 
-    <section id="kenapa" class="kenapa fade-in">
+    <!-- Kenapa OBSIDIAN SERVIS -->
+    <section class="kenapa">
       <h2>Kenapa OBSIDIAN SERVIS?</h2>
-      <ul>
-        <li>
-          Teknisi berpengalaman dengan fokus pada kualitas, bukan kejar jumlah.
-        </li>
-        <li>
-          Transparansi penuh dalam setiap servis, tanpa biaya tersembunyi.
-        </li>
-        <li>
-          Cocok untuk motor harian dan komunitas, dengan komitmen ketahanan
-          jangka panjang.
-        </li>
-      </ul>
+      <p>
+        Teknisi berpengalaman, fokus kualitas bukan kuantitas, transparansi
+        penuh, dan cocok untuk rider serta komunitas motor yang menghargai
+        ketahanan jangka panjang.
+      </p>
     </section>
 
-    <section id="harga" class="harga fade-in">
+    <!-- Daftar Harga -->
+    <section id="harga">
       <h2>Daftar Harga</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Layanan</th>
-            <th>Harga</th>
-            <th>Detail</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Servis Rutin Detail</td>
-            <td>Rp120.000</td>
-            <td>Inspeksi menyeluruh + laporan</td>
-          </tr>
-          <tr>
-            <td>Perbaikan Mesin</td>
-            <td>Mulai Rp450.000</td>
-            <td>Tune up & overhaul</td>
-          </tr>
-          <tr>
-            <td>Cuci Motor Premium</td>
-            <td>Rp40.000</td>
-            <td>Steam detail</td>
-          </tr>
-          <tr>
-            <td>Ganti Oli Presisi</td>
-            <td>Mulai Rp70.000</td>
-            <td>Oli sesuai spek</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="harga">
+        <div class="card">
+          <h3>Servis Rutin Detail</h3>
+          <p>Rp120.000 - Inspeksi menyeluruh untuk performa optimal.</p>
+        </div>
+        <div class="card">
+          <h3>Perbaikan Mesin</h3>
+          <p>Mulai Rp450.000 - Presisi tinggi untuk ketahanan lama.</p>
+        </div>
+        <div class="card">
+          <h3>Cuci Motor Premium</h3>
+          <p>Rp40.000 - Detail tanpa risiko kerusakan.</p>
+        </div>
+        <div class="card">
+          <h3>Ganti Oli Presisi</h3>
+          <p>Mulai Rp70.000 - Sesuai spesifikasi motor Anda.</p>
+        </div>
+      </div>
     </section>
 
-    <section id="booking" class="booking fade-in">
-      <h2>Alur Booking Servis</h2>
-      <form id="booking-form">
-        <input type="text" placeholder="Nama Lengkap" required />
-        <input type="tel" placeholder="No WhatsApp" required />
-        <select required>
-          <option value="">Jenis Motor</option>
-          <option value="matic">Matic</option>
-          <option value="sport">Sport</option>
+    <!-- Booking Servis -->
+    <section id="booking">
+      <h2>Booking Servis</h2>
+      <form class="booking-form" onsubmit="handleBooking(event)">
+        <input type="text" name="nama" placeholder="Nama Lengkap" required />
+        <input type="tel" name="whatsapp" placeholder="No WhatsApp" required />
+        <select name="jenis_motor" required>
+          <option value="">Pilih Jenis Motor</option>
+          <option value="Matic">Matic</option>
+          <option value="Sport">Sport</option>
         </select>
-        <select required>
+        <select name="layanan" required>
           <option value="">Pilih Layanan</option>
-          <option value="rutin">Servis Rutin Detail</option>
-          <option value="mesin">Perbaikan Mesin</option>
-          <option value="cuci">Cuci Motor Premium</option>
-          <option value="oli">Ganti Oli Presisi</option>
+          <option value="Servis Rutin Detail">Servis Rutin Detail</option>
+          <option value="Perbaikan Mesin">Perbaikan Mesin</option>
+          <option value="Cuci Motor Premium">Cuci Motor Premium</option>
+          <option value="Ganti Oli Presisi">Ganti Oli Presisi</option>
         </select>
-        <input type="datetime-local" required />
+        <input type="datetime-local" name="jadwal" required />
+        <textarea
+          name="catatan"
+          placeholder="Catatan Tambahan (Opsional)"
+        ></textarea>
         <button type="submit">Kirim Booking</button>
       </form>
-      <p
-        id="success-message"
-        style="display: none; color: #ff4500; margin-top: 1rem"
-      >
-        Booking berhasil! Kami akan menghubungi Anda via WhatsApp.
-      </p>
     </section>
 
-    <section id="tentang" class="tentang fade-in">
+    <!-- Tentang Kami -->
+    <section id="tentang" class="tentang">
       <h2>Tentang Kami</h2>
       <p>
-        OBSIDIAN SERVIS lahir dari filosofi obsidian: kuat, tahan lama, dan
-        presisi tinggi. Sejak 2018, kami telah melayani komunitas motor dengan
-        komitmen pada kualitas jangka panjang. Setiap servis bukan sekadar
-        perbaikan, melainkan investasi untuk performa motor Anda yang bertahan
-        lama. Kami percaya pada transparansi, edukasi, dan kepercayaan — karena
-        motor Anda layak mendapat yang terbaik.
+        OBSIDIAN SERVIS lahir dari semangat untuk memberikan servis motor yang
+        kuat dan tahan lama, seperti batu obsidian. Kami berkomitmen pada
+        kualitas jangka panjang, dengan teknisi berpengalaman dan pendekatan
+        detail-oriented yang bisa dipercaya oleh komunitas motor.
       </p>
     </section>
 
-    <section id="kontak" class="kontak fade-in">
-      <h2>Kontak & Lokasi</h2>
-      <p>Alamat: Jl. Cendana raya, Wonosobo</p>
-      <p>Jam Operasional: Senin - Sabtu, 08:00 - 18:00</p>
-      <p>Hubungi Kami: <a>WhatsApp</a></p>
+    <!-- Kontak & Footer -->
+    <footer id="kontak">
+      <p>
+        Alamat: Jl. Obsidian No. 123, Jakarta<br />Jam Operasional: Senin -
+        Sabtu, 08:00 - 18:00
+      </p>
+      <p>
+        Hubungi Kami: <a href="https://wa.me/6281234567890">WhatsApp</a> |
+        <a href="https://maps.google.com">Google Maps</a>
+      </p>
       <iframe
-        src="https://maps.app.goo.gl/ihgZibFZg1HCdLKb9
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.816666!3d-6.208763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTInMzEuNSJTIDEwNsKwNDknMDAuMCJF!5e0!3m2!1sen!2sid!4v1234567890123!5m2!1sen!2sid"
+        width="100%"
         height="300"
         style="border: 0"
         allowfullscreen=""
         loading="lazy"
       ></iframe>
-    </section>
-
-    <footer>
-      <p>&copy; 2026 OBSIDIAN SERVIS. Born from Fire, Built to Last.</p>
+      <p>&copy; 2026 OBSIDIAN SERVIS. Built to Last.</p>
     </footer>
 
     <script>
-      // Simple form validation and success message
-      document
-        .getElementById("booking-form")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-          // In a real scenario, send data to server
-          document.getElementById("success-message").style.display = "block";
-          this.reset();
-        });
+      // Toggle Mobile Menu
+      function toggleMenu() {
+        const menu = document.querySelector(".mobile-menu");
+        menu.classList.toggle("active");
+      }
+
+      // Smooth Scroll to Section
+      function scrollToSection(id) {
+        document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+      }
+
+      // Handle Booking Form (Simulasi WhatsApp)
+      function handleBooking(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const message = `Booking Servis:\nNama: ${formData.get(
+          "nama"
+        )}\nWhatsApp: ${formData.get("whatsapp")}\nMotor: ${formData.get(
+          "jenis_motor"
+        )}\nLayanan: ${formData.get("layanan")}\nJadwal: ${formData.get(
+          "jadwal"
+        )}\nCatatan: ${formData.get("catatan")}`;
+        const whatsappUrl = `https://wa.me/6281234567890?text=${encodeURIComponent(
+          message
+        )}`;
+        window.open(whatsappUrl, "_blank");
+        alert("Booking berhasil! Pesan telah dikirim via WhatsApp.");
+      }
     </script>
   </body>
 </html>
